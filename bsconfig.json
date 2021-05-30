@@ -1,18 +1,22 @@
 {
-  "name": "rescript-project-template",
-  "version": "0.0.1",
+  "name": "grammarless",
+  "reason": {
+    "react-jsx": 3
+  },
   "sources": {
     "dir" : "src",
     "subdirs" : true
   },
-  "package-specs": {
+  "bsc-flags": ["-bs-super-errors", "-bs-no-version-header"],
+  "package-specs": [{
     "module": "commonjs",
     "in-source": true
-  },
+  }],
   "suffix": ".bs.js",
+  "namespace": true,
   "bs-dependencies": [
+    "reason-react",
+    "rescript-recoil"
   ],
-  "warnings": {
-    "error" : "+101"
-  },
+  "refmt": 3
 }

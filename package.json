@@ -1,17 +1,32 @@
 {
-  "name": "rescript-project-template",
-  "version": "0.0.1",
+  "name": "grammarless",
+  "version": "0.1.0",
   "scripts": {
-    "build": "rescript",
-    "clean": "rescript clean -with-deps",
-    "start": "rescript build -w"
+    "start": "bsb -make-world -w -ws _ ",
+    "clean": "bsb -clean-world",
+    "webpack": "webpack -w",
+    "webpack:production": "NODE_ENV=production webpack",
+    "webpack:dev-server": "webpack-dev-server --host 0.0.0.0 --port 3666 --disable-host-check"
   },
   "keywords": [
-    "rescript"
+    "BuckleScript",
+    "ReasonReact",
+    "reason-react"
   ],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "rescript": "*"
+    "html-webpack-plugin": "^4.5.0",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "reason-react": ">=0.7.1",
+    "recoil": "^0.1.2",
+    "rescript-recoil": "^0.11.1",
+    "webpack": "^5.11.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.3.0"
+  },
+  "devDependencies": {
+    "bs-platform": "^8.2.0"
   }
 }
