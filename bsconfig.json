@@ -16,7 +16,9 @@
   "namespace": true,
   "bs-dependencies": [
     "reason-react",
-    "rescript-recoil"
+    "rescript-recoil",
+    "bs-fetch"
+
   ],
   "refmt": 3
 }

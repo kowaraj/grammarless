@@ -126,7 +126,7 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
   \***********************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\n\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nconsole.log(\"Hello, World!\");\n\nfunction App(Props) {\n  return React.createElement(\"div\", undefined, \"Hello World\");\n}\n\nvar make = App;\n\nexports.make = make;\n/*  Not a pure module */\n\n\n//# sourceURL=webpack://grammarless/./src/App.bs.js?");
+eval("\n\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nvar Test$Grammarless = __webpack_require__(/*! ./Test.bs.js */ \"./src/Test.bs.js\");\n\nfunction App(Props) {\n  return React.createElement(Test$Grammarless.make, {});\n}\n\nvar make = App;\n\nexports.make = make;\n/* react Not a pure module */\n\n\n//# sourceURL=webpack://grammarless/./src/App.bs.js?");
 
 /***/ }),
 
@@ -137,6 +137,16 @@ eval("\n\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/in
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 eval("\n\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\nvar ReactDom = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\nvar App$Grammarless = __webpack_require__(/*! ./App.bs.js */ \"./src/App.bs.js\");\n\nvar root = document.querySelector(\"#theapp\");\n\nif (!(root == null)) {\n  ReactDom.render(React.createElement(App$Grammarless.make, {}), root);\n}\n\n/* root Not a pure module */\n\n\n//# sourceURL=webpack://grammarless/./src/Index.bs.js?");
+
+/***/ }),
+
+/***/ "./src/Test.bs.js":
+/*!************************!*\
+  !*** ./src/Test.bs.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+eval("\n\nvar React = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nfunction Test(Props) {\n  var f = function (param) {\n    return Promise.resolve(fetch(\"http://localhost:3666/test.html\").then(function (prim) {\n                      return prim.text();\n                    }).then(function (text) {\n                    return Promise.resolve((console.log(text), undefined));\n                  }));\n  };\n  console.log(f(undefined));\n  return React.createElement(\"div\", undefined, \"Hello World from Test\");\n}\n\nvar make = Test;\n\nexports.make = make;\n/* react Not a pure module */\n\n\n//# sourceURL=webpack://grammarless/./src/Test.bs.js?");
 
 /***/ })
 
