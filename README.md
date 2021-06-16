@@ -3,7 +3,7 @@
 Docs:
 - [bs-fetch](https://github.com/reasonml-community/bs-fetch)
 - [promise in ReScript](https://rescript-lang.org/docs/manual/latest/promise)
-
+- [webpack devServer headers](https://webpack.js.org/configuration/dev-server/#devserverheaders-)
 
 
 # Install 
