@@ -29,6 +29,20 @@ To serve http://localhost:3000/test.html
 
 # CORS
 
+### Configuration
+
+- Request (on the fron-end): 
+  - see `Fetch.fetchWithInit`
+  - add `~mode=Fetch.CORS` into `Fetch.RequestInit.make`
+
+- Response (on the back-end):
+  - see 'devServer->headers' in `_backend/grammarless/webpack.config.js`
+
+### Results
+
+Click on `Fetched content` to get "test file content" displayed 
+
+### Results without webpack devServers headers
 
 - Fetching with request + no init object 
   - Same as fetching with mode=CORS (see below)
@@ -43,4 +57,3 @@ Test.bs.js:37 TypeError: Failed to fetch
 
 - Fetching with mode=NoCORS:
   - Chrome shows the fetched file content in the DevTools, but an empty string is resolved in the promise.
-  
