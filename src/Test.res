@@ -2,14 +2,14 @@
 @react.component
 let make = () => {
 
-    let (text_x, setTextX) = React.useState(_ => "")    
-    let (text_cors, setTextCors) = React.useState(_ => "")    
+    let (text_x, setTextX) = React.useState(_ => "")
 
-    let f = (_e) => {
-            Fetch.fetch("http://localhost:3000/test.html")
+    let f_no_cors = url => {
+            Fetch.fetch(url)
             |> Js.Promise.then_(Fetch.Response.text)
             |> Js.Promise.then_(text => 
                 {
+                    Js.log(url)
                     Js.log(text) 
                     setTextX(_ => text) 
                     |> Js.Promise.resolve            
@@ -17,21 +17,23 @@ let make = () => {
             |> Js.Promise.resolve
             |> ignore
     }
+    let f1 = _e => f_no_cors("http://localhost:3000/test.html")
 
-    let f_cors = (_e) => {
+    let fetch_url = (url, mode) => {
             Fetch.fetchWithInit(
-                "http://localhost:3000/test.html", 
+                url, 
 
                 Fetch.RequestInit.make(
-                    ~mode=Fetch.CORS,
+                    ~mode=mode,
                     ()
                     )
                 )
             |> Js.Promise.then_(Fetch.Response.text)
             |> Js.Promise.then_(text => 
                 {
+                    Js.log(url)
                     Js.log(text) 
-                    setTextCors(_ => text) 
+                    setTextX(_ => text) 
                     |> Js.Promise.resolve            
                 })
             |> Js.Promise.catch( err => 
@@ -43,12 +45,19 @@ let make = () => {
             |> ignore
     }
 
+    let f2 = _e => fetch_url("http://localhost:3000/test.html", Fetch.CORS)
+    let f_nocors = _e => fetch_url("https://cern.ch", Fetch.NoCORS)
+    // let f_cors = _e => fetch_url("https://cern.ch", Fetch.CORS)
+    let f_cors = _e => fetch_url("https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css", Fetch.CORS)
+
 
     <div> 
-        <p onClick=f> {ReasonReact.string("Fetched content:")} </p>
+        <p onClick=f1> {ReasonReact.string("Fetched content:")} </p>
+        <p onClick=f_nocors> {ReasonReact.string("Fetched content with init = NoCORS:")} </p>
+        <p onClick=f_cors> {ReasonReact.string("Fetched content with init = CORS:")} </p>
+
         <p> {ReasonReact.string(text_x)} </p> 
-        <p onClick=f_cors> {ReasonReact.string("Fetched content with cors (no-cors):")} </p>
-        <p> {ReasonReact.string(text_cors)} </p> 
+
         </div>
 
   
